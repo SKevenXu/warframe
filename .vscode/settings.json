@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "D:/vscode/warframe/jar/gson-2.9.0.jar",
+        "jar/lombok.jar",
+        "jar/beautyeye_lnf.jar",
+        "jar/gson-2.9.0.jar"
+    ]
+}

@@ -1,0 +1,492 @@
+{
+  
+    "attributes": [
+      {
+        "group": "default",
+        "suffix": "Bin",
+        "exclusive_to": [
+          "shotgun",
+          "rifle",
+          "pistol",
+          "kitgun"
+        ],
+        "id": "5c5ca81a96e8d2003834fe63",
+        "url_name": "ammo_maximum",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Ampi",
+        "effect": "弹药上限",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Tron",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe64",
+        "url_name": "damage_vs_corpus",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Manti",
+        "effect": "对Corpus伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Con",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe65",
+        "url_name": "damage_vs_grineer",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Argi",
+        "effect": "对Grineer伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Ada",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe66",
+        "url_name": "damage_vs_infested",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Pura",
+        "effect": "对Infested伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Do",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe67",
+        "url_name": "cold_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Geli",
+        "effect": "冰冻伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Um",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5c5ca81a96e8d2003834fe68",
+        "url_name": "channeling_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": null,
+        "prefix": "Para",
+        "effect": "初始连击数",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Us",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5c5ca81a96e8d2003834fe69",
+        "url_name": "channeling_efficiency",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Forti",
+        "effect": "重击效率",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Nem",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5c5ca81a96e8d2003834fe6a",
+        "url_name": "combo_duration",
+        "search_only": false,
+        "negative_only": false,
+        "units": "seconds",
+        "prefix": "Tempi",
+        "effect": "连击持续时间",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Cron",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe6b",
+        "url_name": "critical_chance",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Crita",
+        "effect": "暴击率",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Nent",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5c5ca81a96e8d2003834fe6c",
+        "url_name": "critical_chance_on_slide_attack",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Pleci",
+        "effect": "滑行攻击暴击率",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Tis",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe6d",
+        "url_name": "critical_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Acri",
+        "effect": "暴击伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Ata",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe6e",
+        "url_name": "base_damage_/_melee_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Visi",
+        "effect": "基础伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Tio",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe6f",
+        "url_name": "electric_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Vexi",
+        "effect": "电击伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Pha",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe70",
+        "url_name": "heat_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Igni",
+        "effect": "火焰伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Cta",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5c5ca81a96e8d2003834fe71",
+        "url_name": "finisher_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Exi",
+        "effect": "处决伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Dra",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe72",
+        "url_name": "fire_rate_/_attack_speed",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Croni",
+        "effect": "射速/攻击速度",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Nak",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe73",
+        "url_name": "projectile_speed",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Conci",
+        "effect": "投射物飞行速度",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Ton",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe74",
+        "url_name": "impact_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Magna",
+        "effect": "冲击伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Tin",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe75",
+        "url_name": "magazine_capacity",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Arma",
+        "effect": "弹匣容量",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Can",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe76",
+        "url_name": "multishot",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Sati",
+        "effect": "多重射击",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Tox",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe77",
+        "url_name": "toxin_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Toxi",
+        "effect": "毒素伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Nok",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe78",
+        "url_name": "punch_through",
+        "search_only": false,
+        "negative_only": false,
+        "units": null,
+        "prefix": "Lexi",
+        "effect": "穿透",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Cak",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe79",
+        "url_name": "puncture_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Insi",
+        "effect": "穿刺伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Tak",
+        "exclusive_to": [
+          "shotgun",
+          "rifle",
+          "pistol",
+          "kitgun"
+        ],
+        "id": "5c5ca81a96e8d2003834fe7a",
+        "url_name": "reload_speed",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Feva",
+        "effect": "装填速度",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Tor",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5c5ca81a96e8d2003834fe7b",
+        "url_name": "range",
+        "search_only": false,
+        "negative_only": false,
+        "units": null,
+        "prefix": "Locti",
+        "effect": "攻击范围",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Sus",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe7c",
+        "url_name": "slash_damage",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Sci",
+        "effect": "切割伤害",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Dex",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe7d",
+        "url_name": "status_chance",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Hexa",
+        "effect": "触发几率",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Des",
+        "exclusive_to": null,
+        "id": "5c5ca81a96e8d2003834fe7e",
+        "url_name": "status_duration",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Deci",
+        "effect": "触发时间",
+        "positive_is_negative": false
+      },
+      {
+        "group": "default",
+        "suffix": "Mag",
+        "exclusive_to": [
+          "shotgun",
+          "rifle",
+          "pistol",
+          "kitgun"
+        ],
+        "id": "5c5ca81a96e8d2003834fe7f",
+        "url_name": "recoil",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Zeti",
+        "effect": "后坐力",
+        "positive_is_negative": true
+      },
+      {
+        "group": "default",
+        "suffix": "Lis",
+        "exclusive_to": [
+          "shotgun",
+          "rifle",
+          "pistol",
+          "kitgun"
+        ],
+        "id": "5c5ca81a96e8d2003834fe80",
+        "url_name": "zoom",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Hera",
+        "effect": "变焦",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": "Nus",
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "5dd001d3ff08fd0214d29be2",
+        "url_name": "chance_to_gain_extra_combo_count",
+        "search_only": false,
+        "negative_only": false,
+        "units": "percent",
+        "prefix": "Laci",
+        "effect": "额外连击数获取",
+        "positive_is_negative": false
+      },
+      {
+        "group": "melee",
+        "suffix": null,
+        "exclusive_to": [
+          "melee",
+          "zaw"
+        ],
+        "id": "602569349be2f26959a53d66",
+        "url_name": "chance_to_gain_combo_count",
+        "search_only": false,
+        "negative_only": true,
+        "units": "percent",
+        "prefix": null,
+        "effect": "的几率来获得连击数",
+        "positive_is_negative": false
+      },
+      {
+        "group": "top",
+        "suffix": "",
+        "exclusive_to": null,
+        "id": "60537c332201ea0053ec2e5b",
+        "url_name": "none",
+        "search_only": true,
+        "negative_only": true,
+        "units": null,
+        "prefix": "",
+        "effect": "无负面词条",
+        "positive_is_negative": false
+      },
+      {
+        "group": "top",
+        "suffix": "",
+        "exclusive_to": null,
+        "id": "60537c332201ea0053ec2e5c",
+        "url_name": "has",
+        "search_only": true,
+        "negative_only": true,
+        "units": null,
+        "prefix": "",
+        "effect": "带有负面词条",
+        "positive_is_negative": false
+      }
+    ]
+  
+}
