@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 public class voidTrader {
     public voidTraders voidTrader_Data() {
-        String text=null;
+        String text = null;
         try {
             // like https://api.warframestat.us/pc/zh/vallisCycle/
             // cambionCycle是火卫二时间
@@ -27,129 +27,166 @@ public class voidTrader {
             // BufferedReader br = new BufferedReader(new InputStreamReader(is));
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             // 5、加载一行数据ca
-           text = br.readLine();
+            text = br.readLine();
 
         } catch (Exception e) {
             System.out.println("false");
         }
         Gson gson = new Gson();
-               voidTraders steel = gson.fromJson(text, voidTraders.class);
-                       
+        voidTraders steel = gson.fromJson(text, voidTraders.class);
+
         return steel;
     }
-    public voidTraders steel=voidTrader_Data();
-    public String voidLocation(){
+
+    public voidTraders steel = voidTrader_Data();
+
+    public String voidLocation() {
         return steel.location;
     }
-    public String voidEndString(){
+
+    public String voidEndString() {
         return steel.endString;
     }
-    public String[] item(){
-        String[] items=new String[steel.inventory.size()];
-        for(int i=0;i<items.length;i++){
-            items[i]=steel.inventory.get(i).item;
+
+    public String[] item() {
+        String[] items = new String[steel.inventory.size()];
+        for (int i = 0; i < items.length; i++) {
+            items[i] = steel.inventory.get(i).item;
         }
         return items;
     }
-    public int[] item_ducats(){
-        int[] ducats=new int[steel.inventory.size()];
-        for(int i=0;i<ducats.length;i++){
-            ducats[i]=steel.inventory.get(i).ducats;
+
+    public int[] item_ducats() {
+        int[] ducats = new int[steel.inventory.size()];
+        for (int i = 0; i < ducats.length; i++) {
+            ducats[i] = steel.inventory.get(i).ducats;
         }
         return ducats;
     }
-    public int[] item_credits(){
-        int[] credits=new int[steel.inventory.size()];
-        for(int i=0;i<credits.length;i++){
-            credits[i]=steel.inventory.get(i).credits;
+
+    public int[] item_credits() {
+        int[] credits = new int[steel.inventory.size()];
+        for (int i = 0; i < credits.length; i++) {
+            credits[i] = steel.inventory.get(i).credits;
         }
         return credits;
     }
-                    
+
+    public boolean voidtrader_active() {
+        return steel.active;
+    }
+
+    public String getexpiry() {
+        return steel.expiry;
+    }
+
 }
-class voidTraders{
+
+class voidTraders {
     String startString;
     String expiry;
     boolean active;
     String location;
     List<inventory> inventory;
     String endString;
-    public String  getStartString(){
+
+    public String getStartString() {
         return startString;
-    } 
-    public void setStartString(String startString){
-        this.startString=startString;
     }
-    public String getExpiry(){
+
+    public void setStartString(String startString) {
+        this.startString = startString;
+    }
+
+    public String getExpiry() {
         return expiry;
     }
-    public void setExpiry(String expiry){
-        this.expiry=expiry;
+
+    public void setExpiry(String expiry) {
+        this.expiry = expiry;
     }
-    public boolean getActive(){
+
+    public boolean getActive() {
         return active;
     }
-    public void  setActive(boolean active){
-        this.active=active;
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
-    public String getLocation(){
+
+    public String getLocation() {
         return location;
     }
-    public void setLocation(String location){
-        this.location=location;
+
+    public void setLocation(String location) {
+        this.location = location;
     }
-    public String getEndString(){
+
+    public String getEndString() {
         return endString;
     }
-    public void setEndString(String endString){
-        this.endString=endString;
+
+    public void setEndString(String endString) {
+        this.endString = endString;
     }
-    public List<inventory> getInventory(){
+
+    public List<inventory> getInventory() {
         return inventory;
     }
-    public void setInventory(List<inventory> inventory){
-        this.inventory=inventory;
+
+    public void setInventory(List<inventory> inventory) {
+        this.inventory = inventory;
     }
 }
-class inventory{
+
+class inventory {
     String item;
     int ducats;
     int credits;
-    public String getItem(){
+
+    public String getItem() {
         return item;
     }
-    public void setItem(String item){
-        this.item=item;
+
+    public void setItem(String item) {
+        this.item = item;
     }
-    public int getDucats(){
+
+    public int getDucats() {
         return ducats;
     }
-    public void setDucats(int ducats){
-        this.ducats=ducats;
+
+    public void setDucats(int ducats) {
+        this.ducats = ducats;
     }
-    public int getCredits(){
+
+    public int getCredits() {
         return credits;
     }
-    public void setCredits(int  credits){
-        this.credits=credits;
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }
-/* {
-    
-    
-    "startString": "-23h 2m 43s",
-    "expiry": "2023-11-19T14:00:00.000Z",
-    "active": true,
-    
-    "location": "Kronia 中继站 (土星)",
-    "inventory": [
-        {
-            "uniqueName": "/Lotus/StoreItems/Upgrades/Skins/Sigils/EventSigilScarletSpear",
-            "item": "Event Sigil Scarlet Spear",
-            "ducats": 45,
-            "credits": 45000
-        },
-    ],
-    
-    "endString": "1d 1h 57m 16s",
-} */
+/*
+ * {
+ * 
+ * 
+ * "startString": "-23h 2m 43s",
+ * "expiry": "2023-11-19T14:00:00.000Z",
+ * "active": true,
+ * 
+ * "location": "Kronia 中继站 (土星)",
+ * "inventory": [
+ * {
+ * "uniqueName":
+ * "/Lotus/StoreItems/Upgrades/Skins/Sigils/EventSigilScarletSpear",
+ * "item": "Event Sigil Scarlet Spear",
+ * "ducats": 45,
+ * "credits": 45000
+ * },
+ * ],
+ * 
+ * "endString": "1d 1h 57m 16s",
+ * }
+ */
