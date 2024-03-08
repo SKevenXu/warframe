@@ -80,6 +80,10 @@ public class voidTrader {
         return steel.expiry;
     }
 
+    public String getstartString() {
+        return steel.startString;
+    }
+
 }
 
 class voidTraders {

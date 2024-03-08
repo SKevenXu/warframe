@@ -103,6 +103,9 @@
     XXX.item()                              //返回奸商携带的物品                //该函数返回数据为String[]类型;
     XXX.item_ducats()                       //返回物品所需要的杜卡德金币         //该函数返回数据为int[]类型;   
     XXX.item_credits()                      //返回物品所需要的现金              //该函数返回数据为int[]类型;
+    XXX.voidtrader_active()                 //返回奸商是否活动                  //该函数返回数据为boolean类型;
+    XXX.getexpiry()                         //返回开始时的时间戳                //该函数返回数值为String类型;
+    XXX.getstartString()                    //返回距离开始的时间                //该函数返回数值为String类型;
 紫卡查询:
     方法使用: weaponname XXX=new weaponname();      //weaponname XXX=new weaponname();
     XXX.ReadGsonTest(String ZH_name,Sting weapon.json);       //输入指定中文名武器的url_name(英文名); //该函数返回数据为String类型;
