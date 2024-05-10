@@ -1,25 +1,35 @@
 package program.ducatssearch;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
+import javax.swing.text.AbstractDocument.Content;
+
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-
 public class ducatsget {
-    public String[] ducats_detail(String urlname) {
-        String text=null;
+    public payload ducats_detail() {
+        String text = null;
         try {
             // like https://api.warframestat.us/pc/zh/vallisCycle/
             // cambionCycle是火卫二时间
             // cetusCycle是希图斯时间
             // vallisCycle是金星平原时间
-            URL url = new URL("https://api.warframe.market/v1/items/"+urlname);
+            URL url = new URL("https://api.warframe.market/v1/tools/ducats");
             // 2、连接服务器:打开服务器连接,得到对象conn
             URLConnection conn = url.openConnection();
             conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
@@ -34,98 +44,286 @@ public class ducatsget {
         } catch (Exception e) {
             System.out.println("false");
         }
+        // System.out.println(text);
+        // getFile(text);
         Gson gson = new Gson();
-       data data=gson.fromJson(text, data.class);
-        payload pay=gson.fromJson(data.payload, payload.class);
-        item item=gson.fromJson(pay.item, item.class);
-       /*  String tempdata=gson.toJson(pay);
-
-        item it=gson.fromJson(tempdata, item.class); */
-        
-        
-       String[] temp=new String[2];
-        
-        if(item.items_in_set.get(0).ducats==0){
-            temp[0]="no ducats";
-        }
-        else{
-            temp[0]=String.valueOf(item.items_in_set.get(0).ducats);
-        }
-        
-        temp[1]=item.items_in_set.get(0).url_name;
-        /* temp[0]=it.items_in_set.get(0).url_name;
-        temp[1]=String.valueOf( it.items_in_set.get(0).ducats); */
-        
-        return temp;
-    }
-    /* public String backgeturlname(String urlname){
-        
-        String temp=ducats_detail(urlname).items_in_set.get(0).url_name;
-        return temp;
-    } */
-   
-}
-
-class data{
-    JsonObject payload;
-    public JsonObject getpayload(){
+        demo demo = gson.fromJson(text, demo.class);
+        payload payload = gson.fromJson(demo.payload, payload.class);
         return payload;
     }
-    public void setpayload(JsonObject payload){
-        this.payload=payload;
+
+    payload pay = ducats_detail();
+
+    public String[] getid() {
+        String[] ids = new String[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < ids.length; i++) {
+            ids[i] = pay.previous_hour.get(i).id;
+        }
+        return ids;
+    }
+
+    public String[] getitem() {
+        String[] item = new String[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < item.length; i++) {
+            item[i] = pay.previous_hour.get(i).item;
+        }
+        return item;
+    }
+
+    public float[] getplat_worth() {
+        float[] plat_worth = new float[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < plat_worth.length; i++) {
+            plat_worth[i] = pay.previous_hour.get(i).plat_worth;
+        }
+        return plat_worth;
+    }
+
+    public float[] getducats_per_platinum() {
+        float[] ducats_per_platinum = new float[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < ducats_per_platinum.length; i++) {
+            ducats_per_platinum[i] = pay.previous_hour.get(i).ducats_per_platinum;
+        }
+        return ducats_per_platinum;
+    }
+
+    public int[] getducats() {
+        int[] ducats = new int[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < ducats.length; i++) {
+            ducats[i] = pay.previous_hour.get(i).ducats;
+        }
+        return ducats;
+    }
+
+    public String[] getdatetime() {
+        String[] datetime = new String[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < datetime.length; i++) {
+            datetime[i] = pay.previous_hour.get(i).datetime;
+        }
+        return datetime;
+    }
+
+    /*
+     * public void readJson() throws UnsupportedEncodingException, IOException {
+     * FileInputStream fis = new FileInputStream("program/ducatssearch/temp.txt");
+     * try (Reader reader = new InputStreamReader(fis, "UTF-8")) {
+     * Gson gson = new GsonBuilder().create();
+     * payload p = gson.fromJson(reader, payload.class);
+     * List<previous_hour> previous_hour = p.getPrevious_hour();
+     * for (int i = 0; i < getid().length; i++) {
+     * System.out.println(getid()[i]);
+     * }
+     * 
+     * }
+     * 
+     * }
+     */
+
+    /*
+     * public String backgeturlname(String urlname){
+     * 
+     * String temp=ducats_detail(urlname).items_in_set.get(0).url_name;
+     * return temp;
+     * }
+     */
+
+    /*
+     * public static String readJsonData(String pactFile) {
+     * // 读取文件数据
+     * // System.out.println("读取文件数据util");
+     * 
+     * StringBuffer strbuffer = new StringBuffer();
+     * File myFile = new File(pactFile);// "D:"+File.separatorChar+"DStores.json"
+     * if (!myFile.exists()) {
+     * System.err.println("Can't Find " + pactFile);
+     * }
+     * try {
+     * FileInputStream fis = new FileInputStream(pactFile);
+     * InputStreamReader inputStreamReader = new InputStreamReader(fis, "UTF-8");
+     * BufferedReader in = new BufferedReader(inputStreamReader);
+     * 
+     * String str;
+     * while ((str = in.readLine()) != null) {
+     * strbuffer.append(str); // new String(str,"UTF-8")
+     * }
+     * in.close();
+     * } catch (IOException e) {
+     * e.getStackTrace();
+     * }
+     * // System.out.println("读取文件结束util");
+     * return strbuffer.toString();
+     * }
+     */
+
+}
+
+class demo {
+    JsonObject payload;
+
+    public JsonObject getPayload() {
+        return payload;
+    }
+
+    public void setPayload(JsonObject payload) {
+        this.payload = payload;
     }
 }
 
-class payload{
-     JsonObject item;
-    public JsonObject getItem(){
-        return item;
+class payload {
+    List<previous_hour> previous_hour;
+
+    public List<previous_hour> getPrevious_hour() {
+        return previous_hour;
     }
-    public void setItem(JsonObject item){
-        this.item=item;
-    }
-    
-}
-class item{
-     List<items_in_set> items_in_set;
-    public List<items_in_set> getitems_in_set(){
-        return items_in_set;
-    }
-    public void setItems_in_set(List<items_in_set> items_in_set){
-        this.items_in_set=items_in_set;
+
+    public void setPrevious_hour(List<previous_hour> previous_hour) {
+        this.previous_hour = previous_hour;
     }
 }
-class items_in_set{
-    
+
+class previous_hour {
+    String datetime;
+    int position_change_month;
+    int position_change_week;
+    int position_change_day;
+    float plat_worth;
+    int volume;
+    float ducats_per_platinum;
+    float ducats_per_platinum_wa;
     int ducats;
-    String url_name;
-    public String geturl_name(){
-        return url_name;
+    String item;
+    int median;
+    float wa_price;
+    String id;
+
+    public String getDatetime() {
+        return datetime;
     }
-    public void setUrl_name(String url_name){
-        this.url_name=url_name;
-    }
-   
-    public int getDucats(){
+
+    public int getDucats() {
         return ducats;
     }
-    public void setDucats(int ducats){
-        this.ducats=ducats;
+
+    public float getDucats_per_platinum() {
+        return ducats_per_platinum;
     }
+
+    public float getDucats_per_platinum_wa() {
+        return ducats_per_platinum_wa;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public int getMedian() {
+        return median;
+    }
+
+    public float getPlat_worth() {
+        return plat_worth;
+    }
+
+    public int getPosition_change_day() {
+        return position_change_day;
+    }
+
+    public int getPosition_change_month() {
+        return position_change_month;
+    }
+
+    public int getPosition_change_week() {
+        return position_change_week;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public float getWa_price() {
+        return wa_price;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public void setDucats(int ducats) {
+        this.ducats = ducats;
+    }
+
+    public void setDucats_per_platinum(float ducats_per_platinum) {
+        this.ducats_per_platinum = ducats_per_platinum;
+    }
+
+    public void setDucats_per_platinum_wa(float ducats_per_platinum_wa) {
+        this.ducats_per_platinum_wa = ducats_per_platinum_wa;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public void setMedian(int median) {
+        this.median = median;
+    }
+
+    public void setPlat_worth(float plat_worth) {
+        this.plat_worth = plat_worth;
+    }
+
+    public void setPosition_change_day(int position_change_day) {
+        this.position_change_day = position_change_day;
+    }
+
+    public void setPosition_change_month(int position_change_month) {
+        this.position_change_month = position_change_month;
+    }
+
+    public void setPosition_change_week(int position_change_week) {
+        this.position_change_week = position_change_week;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public void setWa_price(float wa_price) {
+        this.wa_price = wa_price;
+    }
+
 }
-/* "payload": {
-    "item": {
-      "id": "5a2feeb1c2c9e90cbdaa23d2",
-      "items_in_set": [
-        {
-          "sub_icon": "sub_icons/warframe/prime_systems_128x128.png",
-          "url_name": "mirage_prime_systems_blueprint",
-          "mastery_level": 8,
-          "thumb": "items/images/en/thumbs/mirage_prime_systems.e7f8f484dd6ae6c35f0767fff35a5109.128x128.png",
-          "trading_tax": 2000,
-          "set_root": false,
-          "icon_format": "land",
-          "quantity_for_set": 1,
-          "ducats": 45,
-          "icon": "items/images/en/mirage_prime_systems.e7f8f484dd6ae6c35f0767fff35a5109.png",
-          "tags": [ */
+/*
+ * "datetime": "2024-05-10T08:00:00.000+00:00",
+ * "position_change_month": -122,
+ * "position_change_week": -96,
+ * "position_change_day": -111,
+ * "plat_worth": 148,
+ * "volume": 32,
+ * "ducats_per_platinum": 3.75,
+ * "ducats_per_platinum_wa": 3.24,
+ * "ducats": 15,
+ * "item": "54a73e65e779893a797fff22",
+ * "median": 4,
+ * "wa_price": 4.62,
+ * "id": "663de29dbba7740016f9b021"
+ */

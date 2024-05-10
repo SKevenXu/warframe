@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class words_data {
     public demo word_data(String file) {
@@ -28,7 +30,14 @@ public class words_data {
     demo demo = word_data("program/tittle/words.txt");
 
     public void getname() {
-        System.out.println(demo.payload.get(0).length());
+        /*
+         * Gson gson = new Gson();
+         * levelStats levelStats = gson.fromJson(payload.levelStats, levelStats.class);
+         * System.out.println(levelStats.stats.size());
+         */
+        Gson gson = new Gson();
+        payload payload = gson.fromJson(demo.payload, payload.class);
+        System.out.println(demo.payload.get(0).toString());
     }
 
     public static String readJsonData(String pactFile) {
@@ -61,21 +70,22 @@ public class words_data {
 /**
  * Innerwords_data
  */
-class demo {
-    public List<String> payload;
 
-    public List<String> getPayload() {
+class demo {
+    public JsonArray payload;
+
+    public JsonArray getPayload() {
         return payload;
     }
 
-    public void setPayload(List<String> payload) {
+    public void setPayload(JsonArray payload) {
         this.payload = payload;
     }
 }
 
 class payload {
     public String name;
-    public List<String> levelStats;
+    public JsonObject levelStats;
 
     public String getName() {
         return name;
@@ -85,11 +95,11 @@ class payload {
         this.name = name;
     }
 
-    public List<String> getLevelStats() {
+    public JsonObject getLevelStats() {
         return levelStats;
     }
 
-    public void setLevelStats(List<String> levelStats) {
+    public void setLevelStats(JsonObject levelStats) {
         this.levelStats = levelStats;
     }
 }

@@ -4,6 +4,7 @@
         "D:/vscode/warframe/jar/gson-2.9.0.jar",
         "jar/lombok.jar",
         "jar/beautyeye_lnf.jar",
-        "jar/gson-2.9.0.jar"
+        "jar/gson-2.9.0.jar",
+        "jar/commons-lang3-3.12.0.redhat-00001.jar"
     ]
 }
