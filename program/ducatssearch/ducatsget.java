@@ -1,24 +1,19 @@
 package program.ducatssearch;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
+
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-
-import javax.swing.text.AbstractDocument.Content;
+import java.util.Set;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 public class ducatsget {
@@ -94,6 +89,16 @@ public class ducatsget {
         return ducats_per_platinum;
     }
 
+    public float[] getducats_per_platinum_wa() {
+        float[] ducats_per_platinum_wa = new float[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < ducats_per_platinum_wa.length; i++) {
+            ducats_per_platinum_wa[i] = pay.previous_hour.get(i).ducats_per_platinum_wa;
+        }
+        return ducats_per_platinum_wa;
+    }
+
     public int[] getducats() {
         int[] ducats = new int[pay.previous_hour.size()];
         // Gson gson=new Gson();
@@ -112,6 +117,101 @@ public class ducatsget {
             datetime[i] = pay.previous_hour.get(i).datetime;
         }
         return datetime;
+    }
+
+    public int[] getvolume() {
+        int[] volume = new int[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < volume.length; i++) {
+            volume[i] = pay.previous_hour.get(i).volume;
+        }
+        return volume;
+    }
+
+    public int[] getmedian() {
+        int[] median = new int[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < median.length; i++) {
+            median[i] = pay.previous_hour.get(i).median;
+        }
+        return median;
+    }
+
+    public float[] getwa_price() {
+        float[] wa_price = new float[pay.previous_hour.size()];
+        // Gson gson=new Gson();
+        // previous_hour pre=gson.fromJson(pay.previous_hour,previous_hour.class);
+        for (int i = 0; i < wa_price.length; i++) {
+            wa_price[i] = pay.previous_hour.get(i).wa_price;
+        }
+        return wa_price;
+    }
+
+    public int[] getthemaxnum(float[] ducats_per_platinum_wa, int num) {
+
+        // int[] array = {34, 78, 12, 56, 89, 45, 90, 76, 34, 12, 56, 89, 45, 90, 76, 7,
+        // 8, 9, 10};
+        // float[] array = {34.1f, 78.5f, 12.3f, 56.6f, 89.9f, 45.2f, 90.0f, 76.8f,
+        // 34.7f, 12.1f, 56.3f, 89.2f, 45.5f, 90.6f, 76.4f, 7.0f, 8.8f, 9.9f, 10.0f};
+        int[] indices = new int[ducats_per_platinum_wa.length];
+
+        // 存储每个元素的索引
+        for (int i = 0; i < ducats_per_platinum_wa.length; i++) {
+            indices[i] = i;
+        }
+
+        // 创建一个列表，存储原数组的值和对应的索引
+        List<float[]> list = new ArrayList<>();
+        for (int i = 0; i < indices.length; i++) {
+            list.add(new float[] { ducats_per_platinum_wa[indices[i]], indices[i] });
+        }
+
+        // 使用lambda表达式对列表进行排序，按照float值的降序排列
+        Collections.sort(list, (a, b) -> Float.compare(b[0], a[0]));
+
+        // 取出前十个最大的值的索引
+        int[] topTenIndices = new int[num];
+        for (int i = 0; i < Math.min(num, list.size()); i++) {
+            topTenIndices[i] = (int) list.get(i)[1];
+        }
+
+        // 使用索引从原数组中获取前十个最大的值
+        float[] topTenValues = new float[num];
+        for (int i = 0; i < topTenValues.length; i++) {
+            topTenValues[i] = ducats_per_platinum_wa[topTenIndices[i]];
+        }
+
+        // 打印结果
+        System.out.println("原数组中前十个最大的float值（不改变位置）：");
+        // for (float value : topTenValues) {
+        // System.out.print(value + " ");
+        // }
+        for (int i = 0; i < topTenValues.length; i++) {
+            System.out.print(topTenValues[i] + "\tplace:" + topTenIndices[i] + "\n ");
+        }
+        return topTenIndices;
+    }
+
+    /*
+     * du.getitem(), it.getid(), it.getitemname()
+     * 
+     */
+    public ArrayList<String> sethash(String[] getitem, String[] getid, String[] getitemname) {
+        // int[] array3=new int[array2.length];
+        ArrayList<String> name = new ArrayList<String>();
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < getitem.length; i++) {
+            set.add(getitem[i]);
+        }
+        for (int i = 0; i < getid.length; i++) {
+            if (set.contains(getid[i])) {
+                name.add(getitemname[i]);
+                // System.out.println(array1[i] + "\t\ti=" + i + "\t\tname=" + array3[i]);
+            }
+        }
+        return name;
     }
 
     /*
